@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, { render } from "enzyme";
+import Enzyme, { mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -11,7 +11,7 @@ describe("The User component (new context version)", () => {
   it("should render name fetched from user context", () => {
     const name = "Johan Hegg";
     const userData = { name, loggedIn: true };
-    const wrapper = render(
+    const wrapper = mount(
       <UserContext.Provider value={userData}>
         <div>
           <div>
@@ -22,6 +22,6 @@ describe("The User component (new context version)", () => {
         </div>
       </UserContext.Provider>
     );
-    expect(wrapper.text()).toMatch(name);
+    expect(wrapper).toIncludeText(name);
   });
 });

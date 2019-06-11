@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, { render } from "enzyme";
+import Enzyme, { shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -11,7 +11,7 @@ describe("The User component (old context version)", () => {
   it("should render name fetched from user context", () => {
     const name = "Johan Hegg";
     const userData = { name, loggedIn: true };
-    const wrapper = render(<User />, { context: { user: userData } });
-    expect(wrapper.text()).toMatch(name);
+    const wrapper = shallow(<User />, { context: { user: userData } });
+    expect(wrapper).toIncludeText(name);
   });
 });
