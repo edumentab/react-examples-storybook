@@ -5,7 +5,7 @@ import { text, boolean } from "@storybook/addon-knobs";
 import { User } from ".";
 import { UserContext } from "./_UserContext";
 
-storiesOf("User (hook)", module).add(
+storiesOf("User (data from context)/User (hook)", module).add(
   "dynamic",
   () => {
     const userData = {
