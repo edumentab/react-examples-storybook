@@ -20,9 +20,11 @@
     "storybook-addon-jsx": "^7.1.2"
   },
   "dependencies": {
+    "create-react-class": "^15.6.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "recompose": "^0.30.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
