@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react";
 import React from "react";
 import { text } from "@storybook/addon-knobs";
 
-import { Hello } from ".";
+import { Hello } from "../Hello";
 
 storiesOf("Hello (basic rendering)", module).add(
   "basic",
