@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 
 import { Form } from ".";
 
-describe("the Form example component (uncontrolled, class)", () => {
+describe("the Form example component (uncontrolled, hook)", () => {
   let wrapper, input, button, callback;
   beforeEach(() => {
     callback = jest.fn();
