@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import { hangman, getLetters, getNbrOfErrors, getStatus } from "../logic";
+import { hangman, getNewGame } from "../logic";
 
 import { UI } from "./components/UI";
 
 export const Hangman = props => {
-  const [state, setState] = useState({
-    maxGuesses: 5,
-    guesses: [],
-    answer: props.answer
-  });
+  const [state, setState] = useState(
+    getNewGame({
+      answer: props.answer
+    })
+  );
 
   const makeGuess = guess => setState(hangman(guess, state));
 
