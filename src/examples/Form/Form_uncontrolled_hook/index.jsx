@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 export const Form = props => {
-  const [field, setField] = useState("John Doe");
+  const inputRef = useRef(null);
   const handleSubmit = () => {
-    props.onSubmit(field);
-    setField("");
+    props.onSubmit(inputRef.current.value);
+    inputRef.current.value = "";
   };
   const handleKeyPress = e => {
     if (e.key === "Enter") handleSubmit();
-  };
-  const handleType = e => {
-    setField(e.target.value);
   };
   return (
     <fieldset>
       <legend>Enter your name</legend>
       <input
+        ref={inputRef}
         data-qa="name-field"
         type="text"
-        onChange={handleType}
         onKeyPress={handleKeyPress}
-        value={field}
+        defaultValue="John Doe"
       />
       <button data-qa="submit-btn" onClick={handleSubmit}>
         Submit!
