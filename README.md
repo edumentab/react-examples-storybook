@@ -1,6 +1,6 @@
 # Welcome
 
-...to (some of) Edument's React training material! This repo contains a bunch of example code, sorted in...
+...to (some of) the training material for [Edument's React course](https://edument.se/en/education/categories/web-development-courses/reactjs)! This repo contains a bunch of example code, sorted in...
 
 - `./src/apps` for "bigger" apps
 - `./src/examples` for "smaller" single-component examples
