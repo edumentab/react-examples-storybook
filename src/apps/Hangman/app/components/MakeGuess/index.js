@@ -9,7 +9,7 @@ export const MakeGuess = props => {
     props.guess(value);
   };
   return (
-    <form onSubmit={callback}>
+    <form onSubmit={callback} style={{ margin: "5px" }}>
       <input
         disabled={props.disabled}
         id="guess"

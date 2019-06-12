@@ -4,7 +4,7 @@ import { text } from "@storybook/addon-knobs";
 
 import { Hangman } from ".";
 
-storiesOf("apps/Hangman/Game", module).add(
+storiesOf("apps/Hangman", module).add(
   "play the game!",
   () => {
     const answer = text("Answer", "aeroplane");
