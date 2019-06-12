@@ -1,6 +1,11 @@
 # Welcome
 
-...to (some of) the training material for [Edument's React course](https://edument.se/en/education/categories/web-development-courses/reactjs)! This repo contains a bunch of example code, sorted in...
+...to (some of) the training material for [Edument](https://edument.se)'s React courses;
+
+- [ReactJS](https://edument.se/en/education/categories/web-development-courses/reactjs)
+- [Advanced React](https://edument.se/en/education/categories/web-development-courses/advanced-react)
+
+This repo contains a bunch of example code, sorted in...
 
 - `./src/apps` for "bigger" apps
 - `./src/examples` for "smaller" single-component examples
@@ -31,13 +36,13 @@ Don't be afraid to experiment - you can simply `git checkout .` to restore the c
 
 ## Running apps in isolation
 
-Sometimes you might want to run an example in isolation, and not within the Storybook (maybe to inspect it using the React Dev Tools). For this we have a simple local setup using [ParcelJS](https://parceljs.org):
+Sometimes you might want to run an example in isolation instead of through the Storybook (maybe to inspect it using the React Dev Tools). For this we have a simple local setup using [ParcelJS](https://parceljs.org):
 
 - Tweak the code in `./runLocally/index.js` to render the component you want to play with
 - Execute `npm run start` in the terminal
-- Go to http://localhost:1234 in the browser (will open automaticall)
+- Go to http://localhost:1234 in the browser (will open automatically)
 
-Parcel will also set up live reloading, so tweaking the code will immediately update the browser.
+Parcel also sets up live reloading, so tweaking the code will immediately update the browser.
 
 ## Creating experiments of your own
 
