@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { hangman, getLetters, getNbrOfErrors, getStatus } from "../../logic";
+import { hangman, getLetters, getNbrOfErrors, getStatus } from "../../../logic";
 
 import { Status } from "../Status";
 import { Gallow } from "../Gallow";

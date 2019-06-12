@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { hangman, getLetters, getNbrOfErrors, getStatus } from "../../logic";
+import { hangman, getLetters, getNbrOfErrors, getStatus } from "../logic";
 
-import { UI } from "../UI";
+import { UI } from "./components/UI";
 
 export const Hangman = props => {
   const [state, setState] = useState({

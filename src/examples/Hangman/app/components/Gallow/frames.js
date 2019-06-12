@@ -1,5 +1,3 @@
-import React from "react";
-
 const frame0 = `
 
 
@@ -50,8 +48,4 @@ const frame4 = `
 ''''''''''
 `;
 
-const frames = [frame0, frame1, frame2, frame3, frame4];
-
-export const Gallow = props => {
-  return <pre>{frames[props.nbrOfErrors]}</pre>;
-};
+export const frames = [frame0, frame1, frame2, frame3, frame4];
