@@ -5,7 +5,7 @@ import { text } from "@storybook/addon-knobs";
 import { Hello } from "../Hello";
 
 storiesOf("examples/Hello (basic rendering)", module).add(
-  "basic",
+  "change input in the Knobs tab",
   () => {
     const name = text("Name", "John Doe");
     return <Hello name={name} />;
