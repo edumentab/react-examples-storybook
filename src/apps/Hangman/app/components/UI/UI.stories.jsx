@@ -17,7 +17,7 @@ const justBeginning = {
 
 const makeGuess = guess => console.log("received guess", guess);
 
-storiesOf("Hangman/components/UI", module)
+storiesOf("apps/Hangman/components/UI", module)
   .add("almost dead", () => <UI state={almostDead} makeGuess={makeGuess} />)
   .add("just beginning", () => (
     <UI state={justBeginning} makeGuess={makeGuess} />

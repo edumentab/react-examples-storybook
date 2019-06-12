@@ -4,7 +4,7 @@ import { text } from "@storybook/addon-knobs";
 
 import { MakeGuess } from ".";
 
-storiesOf("Hangman/components/MakeGuess", module).add("basic", () => {
+storiesOf("apps/Hangman/components/MakeGuess", module).add("basic", () => {
   const callback = value => console.log("Received guess", value);
   return <MakeGuess guess={callback} />;
 });

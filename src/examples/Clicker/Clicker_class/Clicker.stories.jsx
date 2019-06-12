@@ -4,7 +4,7 @@ import { number } from "@storybook/addon-knobs";
 
 import { Clicker } from ".";
 
-storiesOf("Clicker (state handling)/Clicker (class)", module).add(
+storiesOf("examples/Clicker (state handling)/Clicker (class)", module).add(
   "dynamic",
   () => {
     const start = number("Initial count", 0);

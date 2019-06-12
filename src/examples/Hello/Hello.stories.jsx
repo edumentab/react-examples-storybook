@@ -4,7 +4,7 @@ import { text } from "@storybook/addon-knobs";
 
 import { Hello } from "../Hello";
 
-storiesOf("Hello (basic rendering)", module).add(
+storiesOf("examples/Hello (basic rendering)", module).add(
   "basic",
   () => {
     const name = text("Name", "John Doe");
