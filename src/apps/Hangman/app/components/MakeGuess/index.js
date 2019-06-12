@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export const MakeGuess = props => {
-  const callback = e => {
-    e.preventDefault();
-    const input = e.target.children[0];
-    const value = input.value;
-    input.value = "";
-    props.guess(value);
+  const inputRef = useRef(null);
+  const handleKeyPress = e => {
+    if (e.key === "Enter") {
+      props.onSubmit(inputRef.current.value);
+      inputRef.current.value = "";
+    }
   };
   return (
-    <form onSubmit={callback} style={{ margin: "5px" }}>
+    <div style={{ margin: "5px" }}>
       <input
+        ref={inputRef}
+        onKeyPress={handleKeyPress}
         disabled={props.disabled}
         id="guess"
         placeholder="Guess letter or word"
         autoComplete="off"
+        data-qa="guess-input"
       />
-    </form>
+    </div>
   );
 };

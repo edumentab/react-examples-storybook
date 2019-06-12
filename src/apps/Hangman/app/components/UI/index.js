@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { hangman, getLetters, getNbrOfErrors, getStatus } from "../../../logic";
+import { getLetters, getNbrOfErrors, getStatus } from "../../../logic";
 
 import { Status } from "../Status";
 import { Gallow } from "../Gallow";
@@ -16,7 +16,7 @@ export const UI = props => {
   return (
     <div>
       <Status status={status} remaining={state.maxGuesses - nbrOfErrors - 1} />
-      <MakeGuess guess={makeGuess} disabled={status !== "playing"} />
+      <MakeGuess onSubmit={makeGuess} disabled={status !== "playing"} />
       <Word letters={getLetters(state)} />
       <Gallow nbrOfErrors={nbrOfErrors} />
       <GuessHistory guesses={state.guesses} />

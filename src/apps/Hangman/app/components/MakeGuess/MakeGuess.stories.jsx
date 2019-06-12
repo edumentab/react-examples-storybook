@@ -6,5 +6,5 @@ import { MakeGuess } from ".";
 
 storiesOf("apps/Hangman/components/MakeGuess", module).add("basic", () => {
   const callback = value => console.log("Received guess", value);
-  return <MakeGuess guess={callback} />;
+  return <MakeGuess onSubmit={callback} />;
 });
