@@ -28,7 +28,8 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./node_modules/jest-enzyme/lib/index.js"
+      "./node_modules/jest-enzyme/lib/index.js",
+      "./jest.setup.js"
     ]
   }
 }
