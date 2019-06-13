@@ -16,7 +16,11 @@ export const UI = props => {
   return (
     <div>
       <Status status={status} remaining={state.maxGuesses - nbrOfErrors - 1} />
-      <EnterField onSubmit={makeGuess} disabled={status !== "playing"} />
+      <EnterField
+        onSubmit={makeGuess}
+        disabled={status !== "playing"}
+        placeholder="Guess a letter or word"
+      />
       <Word letters={getLetters(state)} />
       <Gallow nbrOfErrors={nbrOfErrors} />
       <GuessHistory guesses={state.guesses} />

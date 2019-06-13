@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 import { hangman, getNewGame } from "../logic";
 
-import { UI } from "./components/UI";
-import { EnterField } from "./components/EnterField";
+import { UI, EnterField } from "./components";
 
 export const Hangman = props => {
   const [state, setState] = useState(null);

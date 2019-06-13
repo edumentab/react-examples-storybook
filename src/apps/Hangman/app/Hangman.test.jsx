@@ -6,8 +6,7 @@ jest.mock("../logic/hangman", () => ({ hangman: jest.fn() }));
 import { getNewGame, hangman } from "../logic";
 
 import { Hangman } from ".";
-import { UI } from "./components/UI";
-import { EnterField } from "./components/EnterField";
+import { UI, EnterField } from "./components";
 
 describe("the Hangman game", () => {
   let wrapper;
