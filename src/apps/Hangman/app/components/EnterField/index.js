@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-export const MakeGuess = props => {
+export const EnterField = props => {
   const inputRef = useRef(null);
   const handleKeyPress = e => {
     if (e.key === "Enter") {
@@ -15,9 +15,9 @@ export const MakeGuess = props => {
         onKeyPress={handleKeyPress}
         disabled={props.disabled}
         id="guess"
-        placeholder="Guess letter or word"
+        placeholder={props.placeholder}
         autoComplete="off"
-        data-qa="guess-input"
+        data-qa="input-field"
       />
     </div>
   );

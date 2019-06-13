@@ -10,7 +10,7 @@ jest.mock("../../../logic/getStatus", () => ({ getStatus: jest.fn() }));
 import { getLetters, getNbrOfErrors, getStatus } from "../../../logic";
 
 import { UI } from ".";
-import { MakeGuess } from "../MakeGuess";
+import { EnterField } from "../EnterField";
 import { Word } from "../Word";
 import { GuessHistory } from "../GuessHistory";
 import { Gallow } from "../Gallow";
@@ -27,12 +27,12 @@ describe("The HangMan UI component", () => {
     callback = jest.fn();
     wrapper = shallow(<UI makeGuess={callback} state={state} />);
   });
-  describe("the MakeGuess usage", () => {
-    test("it renders MakeGuess", () => {
-      expect(wrapper.find(MakeGuess)).toExist();
+  describe("the EnterField usage", () => {
+    test("it renders EnterField", () => {
+      expect(wrapper.find(EnterField)).toExist();
     });
     test("it passes the callback correctly", () => {
-      expect(wrapper.find(MakeGuess)).toHaveProp("onSubmit", callback);
+      expect(wrapper.find(EnterField)).toHaveProp("onSubmit", callback);
     });
     describe('when getStatus returns "playing"', () => {
       beforeEach(() => {
@@ -40,7 +40,7 @@ describe("The HangMan UI component", () => {
         wrapper = shallow(<UI makeGuess={callback} state={state} />);
       });
       test("it passes disabled=false", () => {
-        expect(wrapper.find(MakeGuess)).toHaveProp("disabled", false);
+        expect(wrapper.find(EnterField)).toHaveProp("disabled", false);
       });
     });
     describe('when getStatus does not returns "playing"', () => {
@@ -49,7 +49,7 @@ describe("The HangMan UI component", () => {
         wrapper = shallow(<UI makeGuess={callback} state={state} />);
       });
       test("it passes disabled=true", () => {
-        expect(wrapper.find(MakeGuess)).toHaveProp("disabled", true);
+        expect(wrapper.find(EnterField)).toHaveProp("disabled", true);
       });
     });
   });
