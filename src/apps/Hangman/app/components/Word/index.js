@@ -7,6 +7,13 @@ const letterStyle = {
   backgroundColor: "#CCC"
 };
 
+/**
+ * @typedef {object} WordProps
+ * @prop {(string|null)[]} letters The letters in the current word
+ *
+ * A component to show a text description of the current status
+ * @param {WordProps} props
+ */
 export const Word = props => {
   return (
     <div>

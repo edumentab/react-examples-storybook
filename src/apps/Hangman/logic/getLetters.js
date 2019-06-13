@@ -1,4 +1,6 @@
 /**
+ * @typedef {import("../types").Hangman} Hangman
+ *
  * Helper function that takes a Hangman state and returns an array of letters
  * in the answer, masking all non-guessed letters with `null`
  * @param {Hangman} state - A Hangman game state

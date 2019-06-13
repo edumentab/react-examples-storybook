@@ -1,4 +1,6 @@
 /**
+ * @typedef {import("../types").Hangman} Hangman
+ *
  * Helper function that takes a Hangman state and returns the total number
  * of errors in the made guesses
  * @param {Hangman} state - A Hangman game state

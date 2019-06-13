@@ -8,6 +8,16 @@ import { EnterField } from "../EnterField";
 import { GuessHistory } from "../GuessHistory";
 import { Word } from "../Word";
 
+/**
+ * @typedef {import("../../../types").Hangman} Hangman
+ *
+ * @typedef {object} UIProps
+ * @prop {Hangman} state The current state of the game
+ * @prop {function} makeGuess callback to submit a new guess
+ *
+ * A component render the UI for an ongoing Hangman game
+ * @param {UIProps} props
+ */
 export const UI = props => {
   const { state, makeGuess } = props;
   const nbrOfErrors = getNbrOfErrors(state);

@@ -1,6 +1,9 @@
 import { getNbrOfErrors } from "./getNbrOfErrors";
 
 /**
+ * @typedef {import("../types").Hangman} Hangman
+ * @typedef {import("../types").HangmanStatus} HangmanStatus
+ *
  * Helper function that takes a Hangman state and returns whether the
  * the current status is `won`, `lost` or `playing`
  * @param {Hangman} state

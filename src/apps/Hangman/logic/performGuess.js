@@ -1,6 +1,8 @@
 import { getStatus } from "./getStatus";
 
 /**
+ * @typedef {import("../types").Hangman} Hangman
+ *
  * The main Hangman game logic. Takes a guess (a letter or a word) and
  * the current state, and returns an updated state
  * @param {string} guess The guess that the player just made
