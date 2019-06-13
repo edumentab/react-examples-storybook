@@ -24,7 +24,7 @@ export const ChessPiece = props => {
     >
       <TransitionGroup>
         <Transition key={props.piece} timeout={{ enter: 20, exit: 500 }}>
-          {(status: TransitionStatus) => (
+          {status => (
             <span
               className={classnames(css.icon, {
                 [css.entering]: status === "entering",
