@@ -3,6 +3,8 @@ import { getNbrOfErrors } from "./getNbrOfErrors";
 /**
  * Helper function that takes a Hangman state and returns whether the
  * the current status is `won`, `lost` or `playing`
+ * @param {Hangman} state
+ * @return {HangmanStatus}
  */
 export function getStatus(state) {
   if (getNbrOfErrors(state) >= state.maxGuesses) return "lost";
