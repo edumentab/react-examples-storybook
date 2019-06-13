@@ -8,7 +8,7 @@ storiesOf("apps/Hangman/components/Status", module).add(
   "choose with knobs",
   () => (
     <Status
-      status={select("Status", ["won", "lost", "playing"])}
+      status={select("Status", ["won", "lost", "playing"], "playing")}
       remaining={number("Remaining", 4)}
     />
   )
