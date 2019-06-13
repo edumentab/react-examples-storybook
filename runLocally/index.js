@@ -12,7 +12,4 @@ To run a component locally, simply...
 
 import { Hangman } from "../src/apps/Hangman/app";
 
-ReactDOM.render(
-  <Hangman answer="skyscraper" />,
-  document.getElementById("root")
-);
+ReactDOM.render(<Hangman />, document.getElementById("root"));

@@ -13,7 +13,7 @@ module.exports = ({ config, mode }) => {
           importLoaders: 1,
           modules: {
             mode: "local",
-            localIdentName: "[path][name]__[local]--[hash:base64:5]"
+            localIdentName: "[name]__[local]--[hash:base64:5]"
           }
         }
       }
