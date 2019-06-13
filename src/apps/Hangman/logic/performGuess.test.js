@@ -1,6 +1,6 @@
-import { hangman } from "./hangman";
+import { performGuess } from "./performGuess";
 
-describe("the main Hangman logic function", () => {
+describe("the Hangman performGuess logic function", () => {
   describe("when game is in progress", () => {
     const state = {
       guesses: ["a", "o"],
@@ -8,18 +8,18 @@ describe("the main Hangman logic function", () => {
       maxGuesses: 4
     };
     test("new guesses are added to the state", () => {
-      const result = hangman("i", state);
+      const result = performGuess("i", state);
       expect(result).toEqual({
         ...state,
         guesses: state.guesses.concat("i")
       });
     });
     test("empty guesses are ignored", () => {
-      const result = hangman("", state);
+      const result = performGuess("", state);
       expect(result).toEqual(state);
     });
     test("repeat guesses are ignored", () => {
-      const result = hangman("a", state);
+      const result = performGuess("a", state);
       expect(result).toEqual(state);
     });
   });
@@ -30,7 +30,7 @@ describe("the main Hangman logic function", () => {
       maxGuesses: 4
     };
     test("guesses are ignored", () => {
-      const result = hangman("p", state);
+      const result = performGuess("p", state);
       expect(result).toEqual(state);
     });
   });
@@ -41,7 +41,7 @@ describe("the main Hangman logic function", () => {
       maxGuesses: 4
     };
     test("guesses are ignored", () => {
-      const result = hangman("p", state);
+      const result = performGuess("p", state);
       expect(result).toEqual(state);
     });
   });

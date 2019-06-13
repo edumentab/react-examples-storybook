@@ -11,14 +11,18 @@ describe("The HangMan EnterField component", () => {
     wrapper = mount(
       <EnterField onSubmit={callback} placeholder={placeholder} />
     );
-    input = wrapper.find('[data-qa="guess-input"]');
+    input = wrapper.find('[data-qa="input-field"]');
   });
   test("puts the placeholder on the input", () => {
     expect(input).toHaveProp("placeholder", placeholder);
   });
   describe("when making an input", () => {
-    const input = "a";
+    input = "a";
     beforeEach(() => {
+      wrapper = mount(
+        <EnterField onSubmit={callback} placeholder={placeholder} />
+      );
+      input = wrapper.find('[data-qa="input-field"]');
       input.getDOMNode().value = "a";
       input.simulate("keyPress", { key: "Enter" });
     });
@@ -32,7 +36,7 @@ describe("The HangMan EnterField component", () => {
   describe("when gets disabled flag", () => {
     beforeEach(() => {
       wrapper = mount(<EnterField onSubmit={callback} disabled />);
-      input = wrapper.find('[data-qa="guess-input"]');
+      input = wrapper.find('[data-qa="input-field"]');
     });
     test("the input is disabled", () => {
       expect(input).toHaveProp("disabled", true);

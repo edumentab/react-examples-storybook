@@ -2,8 +2,8 @@ import React from "react";
 import { shallow } from "enzyme";
 
 jest.mock("../logic/getNewGame", () => ({ getNewGame: jest.fn() }));
-jest.mock("../logic/hangman", () => ({ hangman: jest.fn() }));
-import { getNewGame, hangman } from "../logic";
+jest.mock("../logic/performGuess", () => ({ performGuess: jest.fn() }));
+import { getNewGame, performGuess } from "../logic";
 
 import { Hangman } from ".";
 import { UI, EnterField } from "./components";
@@ -41,7 +41,7 @@ describe("the Hangman game", () => {
         const guess = "x";
         const updatedState = { updated: "fake state" };
         beforeEach(() => {
-          hangman.mockReturnValue(updatedState);
+          performGuess.mockReturnValue(updatedState);
           wrapper = shallow(<Hangman />);
           const submitter = wrapper.find(EnterField).prop("onSubmit");
           submitter("secret");
@@ -51,8 +51,8 @@ describe("the Hangman game", () => {
         test("we pass updated state from logic layer to UI", () => {
           expect(wrapper.find(UI)).toHaveProp("state", updatedState);
         });
-        test("the hangman logic was called correctly", () => {
-          expect(hangman).toHaveBeenCalledWith(guess, startState);
+        test("the performGuess logic was called correctly", () => {
+          expect(performGuess).toHaveBeenCalledWith(guess, startState);
         });
       });
     });

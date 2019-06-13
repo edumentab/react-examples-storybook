@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import { hangman, getNewGame } from "../logic";
+import { performGuess, getNewGame } from "../logic";
 
 import { UI, EnterField } from "./components";
 
 export const Hangman = props => {
   const [state, setState] = useState(null);
 
-  const makeGuess = guess => setState(hangman(guess, state));
+  const makeGuess = guess => setState(performGuess(guess, state));
   const startGame = answer => setState(getNewGame({ answer }));
 
   if (!state) {
