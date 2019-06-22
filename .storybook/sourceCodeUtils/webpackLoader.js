@@ -5,10 +5,14 @@ let emitted = false;
 
 module.exports = function sourceLoader(source) {
   const opts = this.query || {};
-  const root = opts.root || "";
+  const { root = "", compiled } = opts;
   const path = this.resourcePath;
   if (!root || path.match(root)) {
-    cache.register(path.substr(root.length).replace(/^\//, ""), source);
+    cache.register(
+      path.substr(root.length).replace(/^\//, ""),
+      source,
+      compiled
+    );
   }
   return source;
 };

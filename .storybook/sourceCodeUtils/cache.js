@@ -1,12 +1,11 @@
 var cache = {};
 
 module.exports = {
-  register(path, source) {
+  register(path, source, compiled) {
     if (!cache[path]) {
-      cache[path] = source;
-    } else if (!cache[path].toString().includes(source)) {
-      cache[path] += source;
+      cache[path] = {};
     }
+    cache[path][compiled ? "compiled" : "raw"] = source;
   },
   getSources() {
     return cache;

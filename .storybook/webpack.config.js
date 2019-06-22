@@ -22,13 +22,23 @@ module.exports = ({ config, mode }) => {
       }
     ]
   });
-  // add loader that registers source code in a cache
+  // add loader that registers raw source code in a cache
   config.module.rules.push({
-    test: /\.jsx?$/,
+    test: /\.jsx?$|\.css$/,
     use: [
       {
         loader: path.resolve(__dirname, "sourceCodeUtils/webpackLoader.js"),
         options: { root: path.resolve(__dirname, "../src") }
+      }
+    ]
+  });
+  // add loader that registers compiled source code in a cache
+  config.module.rules.unshift({
+    test: /\.jsx?$|\.css$/,
+    use: [
+      {
+        loader: path.resolve(__dirname, "sourceCodeUtils/webpackLoader.js"),
+        options: { root: path.resolve(__dirname, "../src"), compiled: true }
       }
     ]
   });

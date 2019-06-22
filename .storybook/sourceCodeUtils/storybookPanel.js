@@ -5,6 +5,7 @@ const SourceCodePanel = props => {
   const { channel, storybookAPI, rawSources: rawSourcesFromProps } = props;
   const [filePath, setFilePath] = useState("");
   const [rawSources, setRawSources] = useState(rawSourcesFromProps);
+  const [showCompiled, setShowCompiled] = useState(false);
   const handleStoryChange = (path, rs) => {
     if (rs) {
       const actualPath = matchPathToSource(path, rs);
@@ -21,6 +22,10 @@ const SourceCodePanel = props => {
   const handleDropdownChange = useCallback(e => setFilePath(e.target.value), [
     setFilePath
   ]);
+  const handleToggleCompiled = useCallback(
+    e => setShowCompiled(e.target.checked),
+    [setShowCompiled]
+  );
   useEffect(() => {
     if (!rawSources) {
       channel.once("sourceCode/rawSources", data => {
@@ -42,6 +47,16 @@ const SourceCodePanel = props => {
   const files = Object.keys(rawSources);
   return (
     <React.Fragment>
+      <div>
+        <label>
+          Show compiled? {(!!showCompiled).toString()}{" "}
+          <input
+            type="checkbox"
+            checked={showCompiled}
+            onChange={handleToggleCompiled}
+          />
+        </label>
+      </div>
       <select onChange={handleDropdownChange} value={filePath}>
         <option> ---- Select a file ---</option>
         {files.map(file => (
@@ -53,7 +68,10 @@ const SourceCodePanel = props => {
       <p>Current file: {filePath}</p>
       <pre
         dangerouslySetInnerHTML={{
-          __html: (rawSources[filePath] || "").replace(/</g, "&lt;")
+          __html: (
+            (rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"] ||
+            ""
+          ).replace(/</g, "&lt;")
         }}
       />
     </React.Fragment>
