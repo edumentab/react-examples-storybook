@@ -80,7 +80,9 @@ const SourceCodePanel = props => {
       </select>
       <p>Current file: {filePath}</p>
       <Highlighter
-        language={filePath.match(/.css$/) ? "css" : "javascript"}
+        language={
+          !showCompiled && filePath.match(/.css$/) ? "css" : "javascript"
+        }
         code={(rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"]}
         onLinkClick={handleLinkClick}
       />
