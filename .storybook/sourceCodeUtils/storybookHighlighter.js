@@ -20,6 +20,7 @@ const HighlighterInner = props => {
   );
   return (
     <div onClick={handleLinkClick}>
+      <style>{`pre.hljs { white-space: pre; overflow-x: auto; }`}</style>
       <SyntaxHighlighter
         language={language}
         showLineNumbers

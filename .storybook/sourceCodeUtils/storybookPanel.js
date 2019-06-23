@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 import addons, { types } from "@storybook/addons";
 import Highlighter from "./storybookHighlighter";
+import path from "path";
 
 const SourceCodePanel = props => {
   const { channel, storybookAPI, rawSources: rawSourcesFromProps } = props;
@@ -13,7 +14,7 @@ const SourceCodePanel = props => {
       if (actualPath) {
         setFilePath(actualPath);
       } else {
-        console.log(
+        console.warn(
           "WARNING! Selected source path not found among rawSources",
           path
         );
@@ -46,7 +47,17 @@ const SourceCodePanel = props => {
   if (!props.active) return null;
   if (!rawSources) return <span>...loading...</span>;
   const files = Object.keys(rawSources).sort();
-  const handleLinkClick = id => console.log("LINK CLICK! :D", id);
+  const handleLinkClick = p => {
+    const rel = path.join(filePath.replace(/\/[^\/]*$/, "/"), p);
+    const found = ["/index.jsx", "/index.js", ".jsx", ".js", ".css"]
+      .map(suff => rel + suff)
+      .find(p => !!rawSources[p]);
+    if (found) {
+      setFilePath(found);
+    } else {
+      console.warn("WARNING - could not find corresponding file in list");
+    }
+  };
   return (
     <React.Fragment>
       <div>
