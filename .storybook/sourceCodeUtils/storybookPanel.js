@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import addons, { types } from "@storybook/addons";
+import Highlighter from "./storybookHighlighter";
 
 const SourceCodePanel = props => {
   const { channel, storybookAPI, rawSources: rawSourcesFromProps } = props;
@@ -44,7 +45,8 @@ const SourceCodePanel = props => {
   }, []);
   if (!props.active) return null;
   if (!rawSources) return <span>...loading...</span>;
-  const files = Object.keys(rawSources);
+  const files = Object.keys(rawSources).sort();
+  const handleLinkClick = id => console.log("LINK CLICK! :D", id);
   return (
     <React.Fragment>
       <div>
@@ -66,13 +68,10 @@ const SourceCodePanel = props => {
         ))}
       </select>
       <p>Current file: {filePath}</p>
-      <pre
-        dangerouslySetInnerHTML={{
-          __html: (
-            (rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"] ||
-            ""
-          ).replace(/</g, "&lt;")
-        }}
+      <Highlighter
+        language={"javascript"}
+        code={(rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"]}
+        onLinkClick={handleLinkClick}
       />
     </React.Fragment>
   );
