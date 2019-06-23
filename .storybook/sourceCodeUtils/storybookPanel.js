@@ -49,13 +49,13 @@ const SourceCodePanel = props => {
   const files = Object.keys(rawSources).sort();
   const handleLinkClick = p => {
     const rel = path.join(filePath.replace(/\/[^\/]*$/, "/"), p);
-    const found = ["/index.jsx", "/index.js", ".jsx", ".js", ".css"]
+    const found = ["/index.jsx", "/index.js", ".jsx", ".js", ".css", ""]
       .map(suff => rel + suff)
       .find(p => !!rawSources[p]);
     if (found) {
       setFilePath(found);
     } else {
-      console.warn("WARNING - could not find corresponding file in list");
+      console.warn("WARNING - could not find corresponding file in list", rel);
     }
   };
   return (
@@ -80,7 +80,7 @@ const SourceCodePanel = props => {
       </select>
       <p>Current file: {filePath}</p>
       <Highlighter
-        language={"javascript"}
+        language={filePath.match(/.css$/) ? "css" : "javascript"}
         code={(rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"]}
         onLinkClick={handleLinkClick}
       />
