@@ -13,6 +13,6 @@
  */
 export const getNewGame = options => ({
   answer: options.answer,
-  maxGuesses: options.maxGuesses,
+  maxGuesses: options.maxGuesses || 4,
   guesses: []
 });
