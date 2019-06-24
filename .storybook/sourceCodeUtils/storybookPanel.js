@@ -59,7 +59,7 @@ const SourceCodePanel = props => {
     }
   };
   return (
-    <React.Fragment>
+    <div style={{ padding: "5px" }}>
       <div>
         <label>
           Show compiled? {(!!showCompiled).toString()}{" "}
@@ -78,7 +78,6 @@ const SourceCodePanel = props => {
           </option>
         ))}
       </select>
-      <p>Current file: {filePath}</p>
       <Highlighter
         language={
           !showCompiled && filePath.match(/.css$/) ? "css" : "javascript"
@@ -86,7 +85,7 @@ const SourceCodePanel = props => {
         code={(rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"]}
         onLinkClick={handleLinkClick}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

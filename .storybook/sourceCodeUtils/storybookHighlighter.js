@@ -1,17 +1,16 @@
 import React, { useCallback } from "react";
-import { SyntaxHighlighter } from "@storybook/components";
-import { styled } from "@storybook/theming";
-import createElement from "react-syntax-highlighter/create-element";
 
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)(({ theme }) => ({
-  fontSize: theme.typography.size.s2 - 1
-}));
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import createElement from "react-syntax-highlighter/dist/create-element";
 
 const HighlighterInner = props => {
   const { code, language = "javascript", onLinkClick } = props;
   const handleLinkClick = useCallback(
     e => {
-      const link = e.target.getAttribute("data-link");
+      const link =
+        e.target.getAttribute("data-link-row") ||
+        e.target.parentNode.getAttribute("data-link-row");
       if (link) {
         onLinkClick(link);
       }
@@ -19,32 +18,42 @@ const HighlighterInner = props => {
     [onLinkClick]
   );
   return (
-    <div onClick={handleLinkClick}>
-      <style>{`pre.hljs { white-space: pre; overflow-x: auto; }`}</style>
-      <SyntaxHighlighter
-        language={language}
-        showLineNumbers
-        renderer={({ rows, stylesheet, useInlineStyles }) => {
-          return rows.map((row, i) => {
-            return createElement({
-              node: {
-                ...row,
-                properties: {
-                  ...row.properties,
-                  className: []
+    <React.Fragment>
+      <style>{`[data-link-row] { cursor: pointer } [data-link-row]:hover { box-shadow: 0 0 3px blue; } `}</style>
+      <div className="source-code" onClick={handleLinkClick}>
+        <SyntaxHighlighter
+          style={prism}
+          customStyle={{ backgroundColor: "transparent", fontSize: "0.8em" }}
+          language={language}
+          renderer={({ rows, stylesheet, useInlineStyles }) => {
+            return rows.map((row, i) => {
+              const children = row.children.map(mapChild);
+              const link = children.find(
+                child => (child.properties || {})["data-link"]
+              );
+              return createElement({
+                node: {
+                  ...row,
+                  properties: {
+                    ...row.properties,
+                    className: [],
+                    ...(link && {
+                      "data-link-row": link.properties["data-link"]
+                    })
+                  },
+                  children: row.children.map(mapChild)
                 },
-                children: row.children.map(mapChild)
-              },
-              stylesheet,
-              useInlineStyles,
-              key: `code-segement${i}`
+                stylesheet,
+                useInlineStyles,
+                key: `code-segement${i}`
+              });
             });
-          });
-        }}
-      >
-        {code}
-      </SyntaxHighlighter>
-    </div>
+          }}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
+    </React.Fragment>
   );
 };
 
@@ -65,30 +74,27 @@ export default Highlighter;
 
 function mapChild(node, i, row) {
   const extraProps = {};
-  if (i > 3 && (node.properties.className || []).includes("string")) {
+  if (i > 3) {
     const content = (((node.children || [])[0] || {}).value || "").replace(
       /^"|"$/g,
       ""
     );
-    if (content.match(/^[\.\/]/)) {
-      const from = row[i - 2];
-      if (
-        (from.properties.className || []).includes("keyword") &&
-        ((from.children || [])[0] || {}).value === "from"
-      ) {
-        return {
-          ...node,
-          properties: {
-            ...node.properties,
-            "data-link": content,
-            className: node.properties.className.concat("file-link"),
-            style: {
-              cursor: "pointer",
-              userSelect: "none"
-            }
-          }
-        };
-      }
+
+    if (
+      // text content looks like a relative path
+      content.match(/^[\.\/]/) &&
+      // prior node is a space
+      ((row[i - 1].children || [])[0] || {}).value === " " &&
+      // node 2 steps down is a `from` keyword
+      ((row[i - 2].children || [])[0] || {}).value === "from"
+    ) {
+      return {
+        ...node,
+        properties: {
+          ...node.properties,
+          "data-link": content
+        }
+      };
     }
   }
   return node;
