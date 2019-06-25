@@ -19,7 +19,7 @@ const HighlighterInner = props => {
   );
   return (
     <React.Fragment>
-      <style>{`[data-link-row] { cursor: pointer } [data-link-row]:hover { box-shadow: 0 0 3px blue; } `}</style>
+      <style>{`[data-link-row] { cursor: pointer; background-color: rgba(0,0,255,0.05); border-radius: 4px; } [data-link-row]:hover { box-shadow: 0 0 3px blue; } `}</style>
       <div className="source-code" onClick={handleLinkClick}>
         <SyntaxHighlighter
           style={prism}

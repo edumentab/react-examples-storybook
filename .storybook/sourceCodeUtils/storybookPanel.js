@@ -5,14 +5,19 @@ import path from "path";
 
 const SourceCodePanel = props => {
   const { channel, storybookAPI, rawSources: rawSourcesFromProps } = props;
-  const [filePath, setFilePath] = useState("");
+  const [fileState, setFileState] = useState({ history: [], idx: 0 });
+  const filePath = fileState.history[fileState.idx] || "";
   const [rawSources, setRawSources] = useState(rawSourcesFromProps);
   const [showCompiled, setShowCompiled] = useState(false);
-  const handleStoryChange = (path, rs) => {
+  const handleFileChange = (path, rs) => {
     if (rs) {
       const actualPath = matchPathToSource(path, rs);
-      if (actualPath) {
-        setFilePath(actualPath);
+      if (actualPath && actualPath !== filePath) {
+        const newHistory = fileState.history
+          .slice(0, fileState.idx + 1)
+          .concat(actualPath);
+        const newIdx = newHistory.length - 1;
+        setFileState({ history: newHistory, idx: newIdx });
       } else {
         console.warn(
           "WARNING! Selected source path not found among rawSources",
@@ -21,28 +26,28 @@ const SourceCodePanel = props => {
       }
     }
   };
-  const handleDropdownChange = useCallback(e => setFilePath(e.target.value), [
-    setFilePath
-  ]);
-  const handleToggleCompiled = useCallback(
-    e => setShowCompiled(e.target.checked),
-    [setShowCompiled]
-  );
+  const handleDropdownChange = e =>
+    handleFileChange(e.target.value, rawSources);
+  const handleToggleCompiled = e => setShowCompiled(e.target.checked);
   useEffect(() => {
     if (!rawSources) {
-      channel.once("sourceCode/rawSources", data => {
+      channel.on("sourceCode/rawSources", data => {
+        channel.removeListener("sourceCode/rawSources");
         setRawSources(data);
-        channel.on("sourceCode/selectedStory", p => handleStoryChange(p, data));
+        channel.on("sourceCode/selectedStory", p => handleFileChange(p, data));
         if (filePath) {
-          handleStoryChange(filePath, data);
+          handleFileChange(filePath, data);
         }
       });
     } else {
       channel.on("sourceCode/selectedStory", p => {
-        handleStoryChange(p, rawSources);
+        handleFileChange(p, rawSources);
       });
     }
-    return () => channel.off("sourceCode/selectedStory");
+    return () => {
+      channel.removeListener("sourceCode/selectedStory");
+      channel.removeListener("sourceCode/rawSources");
+    };
   }, []);
   if (!props.active) return null;
   if (!rawSources) return <span>...loading...</span>;
@@ -53,11 +58,21 @@ const SourceCodePanel = props => {
       .map(suff => rel + suff)
       .find(p => !!rawSources[p]);
     if (found) {
-      setFilePath(found);
+      handleFileChange(found, rawSources);
     } else {
       console.warn("WARNING - could not find corresponding file in list", rel);
     }
   };
+  const handleBack = () =>
+    setFileState({
+      history: fileState.history,
+      idx: Math.max(0, fileState.idx - 1)
+    });
+  const handleForward = () =>
+    setFileState({
+      history: fileState.history,
+      idx: Math.min(fileState.idx + 1, fileState.history.length - 1)
+    });
   return (
     <div style={{ padding: "5px" }}>
       <div>
@@ -70,6 +85,20 @@ const SourceCodePanel = props => {
           />
         </label>
       </div>
+      <button
+        style={{ fontSize: "initial", marginRight: "10px" }}
+        onClick={handleBack}
+        disabled={fileState.idx === 0}
+      >
+        ◀
+      </button>
+      <button
+        onClick={handleForward}
+        style={{ fontSize: "initial", marginRight: "10px" }}
+        disabled={fileState.idx === fileState.history.length - 1}
+      >
+        ▶
+      </button>
       <select onChange={handleDropdownChange} value={filePath}>
         <option> ---- Select a file ---</option>
         {files.map(file => (
@@ -82,7 +111,9 @@ const SourceCodePanel = props => {
         language={
           !showCompiled && filePath.match(/.css$/) ? "css" : "javascript"
         }
-        code={(rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"]}
+        code={
+          (rawSources[filePath] || {})[showCompiled ? "compiled" : "raw"] || ""
+        }
         onLinkClick={handleLinkClick}
       />
     </div>
