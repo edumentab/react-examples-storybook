@@ -1,42 +1,43 @@
 {
-  "scripts": {
-    "storybook": "start-storybook",
-    "start": "parcel ./runLocally/index.html",
-    "test": "jest"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-knobs": "^5.1.3",
-    "@storybook/addon-notes": "^5.1.3",
-    "@storybook/react": "^5.1.3",
-    "babel-loader": "^8.0.6",
-    "core-js": "^3.1.3",
-    "css-loader": "^3.0.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
-    "jest": "^24.8.0",
-    "jest-enzyme": "^7.0.2",
-    "parcel-bundler": "^1.12.3",
-    "postcss-modules": "^1.4.1",
-    "storybook-addon-jsx": "^7.1.2",
-    "style-loader": "^0.23.1"
-  },
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "create-react-class": "^15.6.3",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-syntax-highlighter": "^10.3.0",
-    "recompose": "^0.30.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "./node_modules/jest-enzyme/lib/index.js",
-      "./jest.setup.js"
-    ]
-  }
+    "scripts": {
+        "storybook": "start-storybook",
+        "build-storybook": "build-storybook -c .storybook -o .dist",
+        "start": "parcel ./runLocally/index.html",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@babel/preset-env": "^7.4.5",
+        "@babel/preset-react": "^7.0.0",
+        "@storybook/addon-knobs": "^5.1.3",
+        "@storybook/addon-notes": "^5.1.3",
+        "@storybook/react": "^5.1.3",
+        "babel-loader": "^8.0.6",
+        "core-js": "^3.1.3",
+        "css-loader": "^3.0.0",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
+        "jest": "^24.8.0",
+        "jest-enzyme": "^7.0.2",
+        "parcel-bundler": "^1.12.3",
+        "postcss-modules": "^1.4.1",
+        "storybook-addon-jsx": "^7.1.2",
+        "style-loader": "^0.23.1"
+    },
+    "dependencies": {
+        "classnames": "^2.2.6",
+        "create-react-class": "^15.6.3",
+        "prop-types": "^15.7.2",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-syntax-highlighter": "^10.3.0",
+        "recompose": "^0.30.0"
+    },
+    "jest": {
+        "setupFilesAfterEnv": [
+            "./node_modules/jest-enzyme/lib/index.js",
+            "./jest.setup.js"
+        ]
+    }
 }
