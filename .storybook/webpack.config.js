@@ -53,7 +53,9 @@ module.exports = ({ config, mode }) => {
     })
     // add plugin that collects the source code
     config.plugins.push(new SourcePlugin())
-    // prevent minification of source and filename mangling (which b0rks source file switching)
+    // prevent filename mangling (which b0rks source file switching)
     config.mode = 'development'
+    // prevent minification
+    config.optimization.minimizer = []
     return config
 }
