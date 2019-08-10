@@ -14,7 +14,8 @@ storiesOf('home', module)
     <button
       href="#"
       style={{
-        maxWidth: '100%',
+        maxWidth: '85%',
+        maxHeight: '85%',
         display: 'block',
         textDecoration: 'none',
         cursor: 'pointer',
