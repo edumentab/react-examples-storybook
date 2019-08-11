@@ -1,16 +1,16 @@
-var cache = {};
+var cache = {}
 
 module.exports = {
   register(path, source, compiled) {
     if (!cache[path]) {
-      cache[path] = {};
+      cache[path] = {}
     }
-    cache[path][compiled ? "compiled" : "raw"] = source;
+    cache[path][compiled ? 'compiled' : 'raw'] = source
   },
   getSources() {
-    return cache;
+    return cache
   },
   cleanCache() {
-    cache = {};
-  }
-};
+    cache = {}
+  },
+}
