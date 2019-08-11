@@ -29,25 +29,24 @@ const SourceCodePanel = props => {
   const handleDropdownChange = e => handleFileChange(e.target.value, rawSources)
   const handleToggleCompiled = e => setShowCompiled(e.target.checked)
   useEffect(() => {
-    if (!rawSources) {
-      channel.on('sourceCode/rawSources', data => {
-        channel.removeListener('sourceCode/rawSources')
-        setRawSources(data)
-        channel.on('sourceCode/selectedStory', p => handleFileChange(p, data))
-        if (filePath) {
-          handleFileChange(filePath, data)
-        }
-      })
-    } else {
-      channel.on('sourceCode/selectedStory', p => {
-        handleFileChange(p, rawSources)
-      })
-    }
-    return () => {
-      channel.removeListener('sourceCode/selectedStory')
+    channel.on('sourceCode/rawSources', newRawSources => {
       channel.removeListener('sourceCode/rawSources')
-    }
-  }, [])
+      setRawSources(newRawSources)
+      if (filePath) {
+        handleFileChange(filePath, newRawSources)
+      }
+    })
+    return () => channel.removeListener('sourceCode/selectedStory')
+  }, [setRawSources])
+  useEffect(() => {
+    channel.on('sourceCode/selectedStory', p => {
+      if (rawSources) {
+        handleFileChange(p, rawSources)
+      }
+    })
+    return () => channel.removeListener('sourceCode/rawSources')
+  }, [rawSources])
+
   if (!props.active) return null
   if (!rawSources) return <span>...loading...</span>
   const files = Object.keys(rawSources).sort()
