@@ -15,5 +15,5 @@ module.exports = function sourceLoader(source) {
     )
   }
   // if it was a test file we don't want to execute it
-  return path.match('.test.') ? '' : source
+  return path.match('.test.') && compiled ? '' : source
 }
