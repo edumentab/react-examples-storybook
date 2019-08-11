@@ -1,14 +1,14 @@
-import React, { createRef } from "react";
+import React, { createRef } from 'react'
 
 export class Form extends React.Component {
-  input = createRef();
+  input = createRef()
   handleKeyPress = e => {
-    if (e.key === "Enter") this.submitName();
-  };
+    if (e.key === 'Enter') this.submitName()
+  }
   submitName = () => {
-    this.props.onSubmit(this.input.current.value);
-    this.input.current.value = "";
-  };
+    this.props.onSubmit(this.input.current.value)
+    this.input.current.value = ''
+  }
   render() {
     return (
       <fieldset>
@@ -24,6 +24,6 @@ export class Form extends React.Component {
           Submit!
         </button>
       </fieldset>
-    );
+    )
   }
 }

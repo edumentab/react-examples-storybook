@@ -1,12 +1,12 @@
-import { storiesOf } from "@storybook/react";
-import React from "react";
+import { storiesOf } from '@storybook/react'
+import React from 'react'
 
-import { Hangman } from ".";
+import { Hangman } from '.'
 
-storiesOf("apps/Hangman", module).add(
-  "play the game!",
+storiesOf('apps/Hangman', module).add(
+  'play the game!',
   () => {
-    return <Hangman />;
+    return <Hangman />
   },
   {
     notes: {
@@ -16,7 +16,7 @@ developed one at at time before being put together in this main <code>Hangman</c
 
 Also note how none of almost none of the game logic resides in the components; they are instead
 found in separate functions (a "logic layer") for portability and testability.
-`
-    }
+`,
+    },
   }
-);
+)

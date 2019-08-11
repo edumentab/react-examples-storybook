@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { withState } from "recompose";
+import React, { useState } from 'react'
+import { withState } from 'recompose'
 
-const withCountState = withState("count", "setCount");
+const withCountState = withState('count', 'setCount')
 
 export const Clicker = props => {
-  const start = props.start || 0;
-  const withCountState = withState("count", "setCount", start);
+  const start = props.start || 0
+  const withCountState = withState('count', 'setCount', start)
   const InnerClicker = withCountState(({ count, setCount }) => (
     <div>
       Current count: <span data-qa="count">{count}</span>
@@ -16,6 +16,6 @@ export const Clicker = props => {
         Decrease
       </button>
     </div>
-  ));
-  return <InnerClicker />;
-};
+  ))
+  return <InnerClicker />
+}

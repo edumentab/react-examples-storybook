@@ -6,7 +6,7 @@ const frame0 = `
  ________
 /        \\
 ''''''''''
-`;
+`
 
 const frame1 = `
 
@@ -16,7 +16,7 @@ const frame1 = `
  ___|____
 /        \\
 ''''''''''
-`;
+`
 
 const frame2 = `
     .________
@@ -26,7 +26,7 @@ const frame2 = `
  ___|____
 /        \\
 ''''''''''
-`;
+`
 
 const frame3 = `
     .________
@@ -36,7 +36,7 @@ const frame3 = `
  ___|____
 /        \\
 ''''''''''
-`;
+`
 
 const frame4 = `
     .________
@@ -46,6 +46,6 @@ const frame4 = `
  ___|____   / \\
 /        \\
 ''''''''''
-`;
+`
 
-export const frames = [frame0, frame1, frame2, frame3, frame4];
+export const frames = [frame0, frame1, frame2, frame3, frame4]

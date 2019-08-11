@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import pt from "prop-types";
+import React, { useRef } from 'react'
+import pt from 'prop-types'
 
 /**
  * @typedef {object} EnterFieldProps
@@ -11,15 +11,15 @@ import pt from "prop-types";
  * @param {EnterFieldProps} props
  */
 export const EnterField = props => {
-  const inputRef = useRef(null);
+  const inputRef = useRef(null)
   const handleKeyPress = e => {
-    if (e.key === "Enter") {
-      props.onSubmit(inputRef.current.value);
-      inputRef.current.value = "";
+    if (e.key === 'Enter') {
+      props.onSubmit(inputRef.current.value)
+      inputRef.current.value = ''
     }
-  };
+  }
   return (
-    <div style={{ margin: "5px" }}>
+    <div style={{ margin: '5px' }}>
       <input
         ref={inputRef}
         onKeyPress={handleKeyPress}
@@ -30,5 +30,5 @@ export const EnterField = props => {
         data-qa="input-field"
       />
     </div>
-  );
-};
+  )
+}

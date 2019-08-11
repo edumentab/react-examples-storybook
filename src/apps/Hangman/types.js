@@ -11,11 +11,10 @@ import pt from 'prop-types'
  * @typedef {'won' | 'lost' | 'playing'} HangmanStatus
  */
 
-
 export const HangmanProp = pt.shape({
   guesses: pt.arrayOf(pt.string).isRequired,
-  answer: pt.string.isRequired
-  maxGuesses: pt.number.isRequired
+  answer: pt.string.isRequired,
+  maxGuesses: pt.number.isRequired,
 })
 
 export const HangmanStatusProp = pt.oneOf(['won', 'lost', 'playing'])

@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react'
 
 export class Form extends React.Component {
-  state = { field: "John Doe" };
-  handleType = e => this.setState({ field: e.target.value });
+  state = { field: 'John Doe' }
+  handleType = e => this.setState({ field: e.target.value })
   handleKeyPress = e => {
-    if (e.key === "Enter") this.submitName();
-  };
+    if (e.key === 'Enter') this.submitName()
+  }
   submitName = () => {
-    this.props.onSubmit(this.state.field);
-    this.setState({ field: "" });
-  };
+    this.props.onSubmit(this.state.field)
+    this.setState({ field: '' })
+  }
   render() {
     return (
       <fieldset>
@@ -25,6 +25,6 @@ export class Form extends React.Component {
           Submit!
         </button>
       </fieldset>
-    );
+    )
   }
 }

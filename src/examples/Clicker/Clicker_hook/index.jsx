@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 export const Clicker = props => {
-  const [count, setCount] = useState(props.start || 0);
+  const [count, setCount] = useState(props.start || 0)
   return (
     <div>
       Current count: <span data-qa="count">{count}</span>
@@ -12,5 +12,5 @@ export const Clicker = props => {
         Decrease
       </button>
     </div>
-  );
-};
+  )
+}

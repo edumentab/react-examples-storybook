@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 export const Form = props => {
-  const [field, setField] = useState("John Doe");
+  const [field, setField] = useState('John Doe')
   const handleSubmit = () => {
-    props.onSubmit(field);
-    setField("");
-  };
+    props.onSubmit(field)
+    setField('')
+  }
   const handleKeyPress = e => {
-    if (e.key === "Enter") handleSubmit();
-  };
+    if (e.key === 'Enter') handleSubmit()
+  }
   const handleType = e => {
-    setField(e.target.value);
-  };
+    setField(e.target.value)
+  }
   return (
     <fieldset>
       <legend>Enter your name</legend>
@@ -26,5 +26,5 @@ export const Form = props => {
         Submit!
       </button>
     </fieldset>
-  );
-};
+  )
+}

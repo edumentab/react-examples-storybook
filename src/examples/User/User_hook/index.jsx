@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 
-import { UserContext } from "./_UserContext";
+import { UserContext } from './_UserContext'
 
 export const User = props => {
-  const user = useContext(UserContext);
+  const user = useContext(UserContext)
   return (
     <span>
-      {user.name || "Anonymous"} {user.loggedIn && "(authenticated)"}
+      {user.name || 'Anonymous'} {user.loggedIn && '(authenticated)'}
     </span>
-  );
-};
+  )
+}

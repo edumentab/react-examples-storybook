@@ -1,14 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react'
 
 export const Form = props => {
-  const inputRef = useRef(null);
+  const inputRef = useRef(null)
   const handleSubmit = () => {
-    props.onSubmit(inputRef.current.value);
-    inputRef.current.value = "";
-  };
+    props.onSubmit(inputRef.current.value)
+    inputRef.current.value = ''
+  }
   const handleKeyPress = e => {
-    if (e.key === "Enter") handleSubmit();
-  };
+    if (e.key === 'Enter') handleSubmit()
+  }
   return (
     <fieldset>
       <legend>Enter your name</legend>
@@ -23,5 +23,5 @@ export const Form = props => {
         Submit!
       </button>
     </fieldset>
-  );
-};
+  )
+}

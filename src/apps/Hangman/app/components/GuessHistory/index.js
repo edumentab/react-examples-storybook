@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 /**
  * @typedef {import("../../../types").HangmanStatus} HangmanStatus
@@ -19,5 +19,5 @@ export const GuessHistory = props => {
         ))}
       </ul>
     </React.Fragment>
-  );
-};
+  )
+}

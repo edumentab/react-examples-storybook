@@ -1,14 +1,14 @@
-import React, { useState, Component } from "react";
+import React, { useState, Component } from 'react'
 
 export class Clicker extends Component {
   constructor(props) {
-    super(props);
-    this.state = { count: props.start || 0 };
+    super(props)
+    this.state = { count: props.start || 0 }
   }
   // note that we assign arrow functions here to make sure `this`
   // points to the right thing when passed as a reference
-  increase = () => this.setState({ count: this.state.count + 1 });
-  decrease = () => this.setState({ count: this.state.count - 1 });
+  increase = () => this.setState({ count: this.state.count + 1 })
+  decrease = () => this.setState({ count: this.state.count - 1 })
   render() {
     return (
       <div>
@@ -20,6 +20,6 @@ export class Clicker extends Component {
           Decrease
         </button>
       </div>
-    );
+    )
   }
 }

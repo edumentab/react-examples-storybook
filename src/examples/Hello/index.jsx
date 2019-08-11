@@ -1,5 +1,5 @@
-import React from "react";
+import React from 'react'
 
 export const Hello = props => {
-  return <span>Hello {props.name}!</span>;
-};
+  return <span>Hello {props.name}!</span>
+}

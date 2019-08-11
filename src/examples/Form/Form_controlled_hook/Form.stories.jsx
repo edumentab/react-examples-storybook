@@ -1,17 +1,17 @@
-import { storiesOf } from "@storybook/react";
-import React from "react";
+import { storiesOf } from '@storybook/react'
+import React from 'react'
 
-import { Form } from ".";
+import { Form } from '.'
 
 storiesOf(
-  "examples/Form (controlled vs uncontrolled)/Form (controlled, hook)",
+  'examples/Form (controlled vs uncontrolled)/Form (controlled, hook)',
   module
 ).add(
-  "output in console",
+  'output in console',
   () => {
-    return <Form onSubmit={name => console.log("Submitted", name)} />;
+    return <Form onSubmit={name => console.log('Submitted', name)} />
   },
   {
-    notes: `A form using the [controlled pattern](https://reactjs.org/docs/forms.html#controlled-components)`
+    notes: `A form using the [controlled pattern](https://reactjs.org/docs/forms.html#controlled-components)`,
   }
-);
+)

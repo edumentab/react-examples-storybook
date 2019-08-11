@@ -1,4 +1,4 @@
-import { getStatus } from "./getStatus";
+import { getStatus } from './getStatus'
 
 /**
  * @typedef {import("../types").Hangman} Hangman
@@ -13,12 +13,12 @@ export function performGuess(guess, currentState) {
   if (
     !guess || // ignore empty guesses
     currentState.guesses.includes(guess) || // ignore duplicate guesses
-    getStatus(currentState) !== "playing" // ignore guesses after game end
+    getStatus(currentState) !== 'playing' // ignore guesses after game end
   ) {
-    return currentState;
+    return currentState
   }
   return {
     ...currentState,
-    guesses: currentState.guesses.concat(guess)
-  };
+    guesses: currentState.guesses.concat(guess),
+  }
 }

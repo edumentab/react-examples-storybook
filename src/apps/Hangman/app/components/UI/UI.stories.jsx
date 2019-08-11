@@ -1,24 +1,24 @@
-import { storiesOf } from "@storybook/react";
-import React from "react";
+import { storiesOf } from '@storybook/react'
+import React from 'react'
 
-import { UI } from ".";
+import { UI } from '.'
 
 const almostDead = {
-  answer: "aeroplane",
+  answer: 'aeroplane',
   maxGuesses: 4,
-  guesses: ["a", "e", "x", "n", "u"]
-};
+  guesses: ['a', 'e', 'x', 'n', 'u'],
+}
 
 const justBeginning = {
-  answer: "malediction",
+  answer: 'malediction',
   maxGuesses: 4,
-  guesses: []
-};
+  guesses: [],
+}
 
-const makeGuess = guess => console.log("received guess", guess);
+const makeGuess = guess => console.log('received guess', guess)
 
-storiesOf("apps/Hangman/components/UI", module)
-  .add("almost dead", () => <UI state={almostDead} makeGuess={makeGuess} />)
-  .add("just beginning", () => (
+storiesOf('apps/Hangman/components/UI', module)
+  .add('almost dead', () => <UI state={almostDead} makeGuess={makeGuess} />)
+  .add('just beginning', () => (
     <UI state={justBeginning} makeGuess={makeGuess} />
-  ));
+  ))

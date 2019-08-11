@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import { getLetters, getNbrOfErrors, getStatus } from "../../../logic";
+import { getLetters, getNbrOfErrors, getStatus } from '../../../logic'
 
-import { Status } from "../Status";
-import { Gallow } from "../Gallow";
-import { EnterField } from "../EnterField";
-import { GuessHistory } from "../GuessHistory";
-import { Word } from "../Word";
+import { Status } from '../Status'
+import { Gallow } from '../Gallow'
+import { EnterField } from '../EnterField'
+import { GuessHistory } from '../GuessHistory'
+import { Word } from '../Word'
 
 /**
  * @typedef {import("../../../types").Hangman} Hangman
@@ -19,21 +19,21 @@ import { Word } from "../Word";
  * @param {UIProps} props
  */
 export const UI = props => {
-  const { state, makeGuess } = props;
-  const nbrOfErrors = getNbrOfErrors(state);
-  const status = getStatus(state);
+  const { state, makeGuess } = props
+  const nbrOfErrors = getNbrOfErrors(state)
+  const status = getStatus(state)
 
   return (
     <div>
       <Status status={status} remaining={state.maxGuesses - nbrOfErrors - 1} />
       <EnterField
         onSubmit={makeGuess}
-        disabled={status !== "playing"}
+        disabled={status !== 'playing'}
         placeholder="Guess a letter or word"
       />
       <Word letters={getLetters(state)} />
       <Gallow nbrOfErrors={nbrOfErrors} />
       <GuessHistory guesses={state.guesses} />
     </div>
-  );
-};
+  )
+}

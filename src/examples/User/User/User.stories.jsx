@@ -1,17 +1,17 @@
-import { storiesOf } from "@storybook/react";
-import React from "react";
-import { text, boolean } from "@storybook/addon-knobs";
+import { storiesOf } from '@storybook/react'
+import React from 'react'
+import { text, boolean } from '@storybook/addon-knobs'
 
-import { User } from ".";
-import { UserContext } from "./_UserContext";
+import { User } from '.'
+import { UserContext } from './_UserContext'
 
-storiesOf("examples/User (data from context)/User (context)", module).add(
-  "dynamic",
+storiesOf('examples/User (data from context)/User (context)', module).add(
+  'dynamic',
   () => {
     const userData = {
-      name: text("Name", "Johan Hegg"),
-      loggedIn: boolean("Logged in", true)
-    };
+      name: text('Name', 'Johan Hegg'),
+      loggedIn: boolean('Logged in', true),
+    }
     return (
       <UserContext.Provider value={userData}>
         <div>
@@ -22,11 +22,11 @@ storiesOf("examples/User (data from context)/User (context)", module).add(
           </div>
         </div>
       </UserContext.Provider>
-    );
+    )
   },
   {
     notes: {
-      markdown: `A component fetching data from the [React context API](https://reactjs.org/docs/context.html).`
-    }
+      markdown: `A component fetching data from the [React context API](https://reactjs.org/docs/context.html).`,
+    },
   }
-);
+)

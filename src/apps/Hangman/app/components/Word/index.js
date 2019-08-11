@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 const letterStyle = {
-  fontSize: "60px",
-  margin: "3px",
-  fontFamily: "monospace",
-  backgroundColor: "#CCC"
-};
+  fontSize: '60px',
+  margin: '3px',
+  fontFamily: 'monospace',
+  backgroundColor: '#CCC',
+}
 
 /**
  * @typedef {object} WordProps
@@ -19,9 +19,9 @@ export const Word = props => {
     <div>
       {props.letters.map((letter, n) => (
         <span style={letterStyle} key={n}>
-          {letter || "_"}
+          {letter || '_'}
         </span>
       ))}
     </div>
-  );
-};
+  )
+}
