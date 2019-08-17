@@ -72,17 +72,15 @@ class Highlighter extends React.Component {
 
 export default Highlighter
 
+const matchRelPath = /^["']\..*['"]/
+
 function mapChild(node, i, row) {
   const extraProps = {}
   if (i > 3) {
-    const content = (((node.children || [])[0] || {}).value || '').replace(
-      /^"|"$/g,
-      ''
-    )
-
+    const content = ((node.children || [])[0] || {}).value || ''
     if (
       // text content looks like a relative path
-      content.match(/^[\.\/]/) &&
+      content.match(matchRelPath) &&
       // prior node is a space
       ((row[i - 1].children || [])[0] || {}).value === ' ' &&
       // node 2 steps down is a `from` keyword
@@ -92,7 +90,7 @@ function mapChild(node, i, row) {
         ...node,
         properties: {
           ...node.properties,
-          'data-link': content,
+          'data-link': content.replace(/^['"]|['"]$/g, ''),
         },
       }
     }
