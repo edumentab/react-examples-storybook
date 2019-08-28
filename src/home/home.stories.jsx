@@ -39,24 +39,26 @@ storiesOf('home', module)
     >
       <p>
         Welcome to (some of) the training materials for{' '}
-        <a href="http://edument.se" target="_blank">
+        <a href="http://edument.se" target="_blank" rel="noopener noreferrer">
           Edument
         </a>
-        's course in{' '}
+        &apos;s course in{' '}
         <a
           href="https://edument.se/en/education/categories/web-development-courses/advanced-react"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Advanced React
         </a>
         !
       </p>
       <p>
-        There'll be more thorough instructions here eventually; for now, see the
-        README file in the{' '}
+        There&apos;ll be more thorough instructions here eventually; for now,
+        see the README file in the{' '}
         <a
           href="https://github.com/edumentab/react-examples-storybook"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Github repo
         </a>
