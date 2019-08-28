@@ -36,7 +36,7 @@ const SourceCodePanel = props => {
         handleFileChange(filePath, newRawSources)
       }
     })
-    return () => channel.removeListener('sourceCode/selectedStory')
+    return () => channel.removeListener('sourceCode/rawSources')
   }, [setRawSources])
   useEffect(() => {
     channel.on('sourceCode/selectedStory', p => {
@@ -44,7 +44,7 @@ const SourceCodePanel = props => {
         handleFileChange(p, rawSources)
       }
     })
-    return () => channel.removeListener('sourceCode/rawSources')
+    return () => channel.removeListener('sourceCode/selectedStory')
   }, [rawSources])
 
   if (!props.active) return null

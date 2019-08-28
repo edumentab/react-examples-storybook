@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Hangman } from '.'
 
-storiesOf('apps/Hangman', module).add(
+storiesOf('apps/Hangman (class version)', module).add(
   'play the game!',
   () => {
     return <Hangman />

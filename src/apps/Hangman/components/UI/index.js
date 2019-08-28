@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { getLetters, getNbrOfErrors, getStatus } from '../../../logic'
+import { getLetters, getNbrOfErrors, getStatus } from '../../logic'
 
 import { Status } from '../Status'
 import { Gallow } from '../Gallow'
@@ -9,7 +9,7 @@ import { GuessHistory } from '../GuessHistory'
 import { Word } from '../Word'
 
 /**
- * @typedef {import("../../../types").Hangman} Hangman
+ * @typedef {import("../../types").Hangman} Hangman
  *
  * @typedef {object} UIProps
  * @prop {Hangman} state The current state of the game

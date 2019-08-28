@@ -1,7 +1,7 @@
 import React from 'react'
 
 /**
- * @typedef {import("../../../types").HangmanStatus} HangmanStatus
+ * @typedef {import("../../types").HangmanStatus} HangmanStatus
  *
  * @typedef {object} GuessHistoryProps
  * @prop {string[]} guesses All guesses made so far

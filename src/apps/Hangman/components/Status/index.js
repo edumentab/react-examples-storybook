@@ -1,7 +1,7 @@
 import React from 'react'
 
 /**
- * @typedef {import("../../../types").HangmanStatus} HangmanStatus
+ * @typedef {import("../../types").HangmanStatus} HangmanStatus
  *
  * @typedef {object} StatusProps
  * @prop {HangmanStatus} status The current status of the game

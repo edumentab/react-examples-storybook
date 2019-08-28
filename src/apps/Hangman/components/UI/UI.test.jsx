@@ -1,13 +1,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-jest.mock('../../../logic/getLetters', () => ({ getLetters: jest.fn() }))
-jest.mock('../../../logic/getNbrOfErrors', () => ({
+jest.mock('../../logic/getLetters', () => ({ getLetters: jest.fn() }))
+jest.mock('../../logic/getNbrOfErrors', () => ({
   getNbrOfErrors: jest.fn(),
 }))
-jest.mock('../../../logic/getStatus', () => ({ getStatus: jest.fn() }))
+jest.mock('../../logic/getStatus', () => ({ getStatus: jest.fn() }))
 
-import { getLetters, getNbrOfErrors, getStatus } from '../../../logic'
+import { getLetters, getNbrOfErrors, getStatus } from '../../logic'
 
 import { UI } from '.'
 import { EnterField } from '../EnterField'

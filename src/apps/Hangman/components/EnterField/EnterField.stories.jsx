@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react'
 import React from 'react'
 import { text } from '@storybook/addon-knobs'
 
-import { EnterField } from '.'
+import { EnterField } from '../EnterField'
 
 storiesOf('apps/Hangman/components/EnterField', module).add(
   'submits to console',

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 import { performGuess, getNewGame } from '../logic'
 
-import { UI, EnterField } from './components'
+import { UI, EnterField } from '../components'
 
-export const Hangman = props => {
+export const Hangman = () => {
   const [state, setState] = useState(null)
 
   const makeGuess = guess => setState(performGuess(guess, state))

@@ -6,9 +6,9 @@ jest.mock('../logic/performGuess', () => ({ performGuess: jest.fn() }))
 import { getNewGame, performGuess } from '../logic'
 
 import { Hangman } from '.'
-import { UI, EnterField } from './components'
+import { UI, EnterField } from '../components'
 
-describe('the Hangman game', () => {
+describe('the Hangman game (hook version)', () => {
   let wrapper
   describe('initially', () => {
     beforeEach(() => (wrapper = shallow(<Hangman />)))
