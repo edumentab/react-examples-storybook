@@ -4,6 +4,7 @@ import Transition from 'react-transition-group/Transition'
 import classnames from 'classnames'
 
 import css from './ChessPiece.css'
+import { ChessPieceProps } from './ChessPiece.types';
 
 const char = {
   king: '♚',
@@ -14,6 +15,11 @@ const char = {
   pawn: '♟',
 }
 
+/**
+ * @typedef {import("./ChessPiece.types").ChessPieceProps} ChessPieceProps
+ *
+ * @param {ChessPieceProps} props
+ */
 export const ChessPiece = props => {
   return (
     <span
@@ -39,3 +45,5 @@ export const ChessPiece = props => {
     </span>
   )
 }
+
+ChessPiece.propTypes = ChessPieceProps

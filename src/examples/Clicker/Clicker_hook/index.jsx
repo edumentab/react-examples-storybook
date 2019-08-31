@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
 
+
+/**
+ * @typedef {import("../types").ClickerProps} ClickerProps
+ * 
+ * @param {ClickerProps} props
+ */
 export const Clicker = props => {
   const [count, setCount] = useState(props.start || 0)
   return (

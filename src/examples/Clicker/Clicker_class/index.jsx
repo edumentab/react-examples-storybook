@@ -1,6 +1,19 @@
-import React, { useState, Component } from 'react'
+// @ts-check
 
+import React, { Component } from 'react'
+
+/**
+ * @typedef {import("../types").ClickerProps} ClickerProps
+ * 
+ * @typedef {object} ClickerState
+ * @prop {number} count
+ * 
+ * @extends {Component<ClickerProps, ClickerState>}
+ */
 export class Clicker extends Component {
+  /**
+   * @param {ClickerProps} props 
+   */
   constructor(props) {
     super(props)
     this.state = { count: props.start || 0 }

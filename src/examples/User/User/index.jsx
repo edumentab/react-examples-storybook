@@ -2,7 +2,7 @@ import React from 'react'
 
 import { UserContext } from './_UserContext'
 
-export const User = props => {
+export const User = () => {
   return (
     <UserContext.Consumer>
       {value => (

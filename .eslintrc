@@ -1,5 +1,5 @@
 {
-  "extends": ["plugin:react/recommended"],
+  "extends": ["plugin:react/recommended", "eslint:recommended"],
   "plugins": ["prettier", "react"],
   "parser": "babel-eslint",
   "parserOptions": { "sourceType": "module", "ecmaVersion": 2015 },
@@ -10,5 +10,10 @@
     "react": {
       "version": "detect"
     }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
   }
 }

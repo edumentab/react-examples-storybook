@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import { EnterField } from '.'
 
 describe('The HangMan EnterField component', () => {
-  let wrapper, input, button, callback
+  let wrapper, input, callback
   const placeholder = 'write stuff here'
   beforeEach(() => {
     callback = jest.fn()

@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { withState } from 'recompose'
-
-const withCountState = withState('count', 'setCount')
 
 export const Clicker = props => {
   const start = props.start || 0

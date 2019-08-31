@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import pt from 'prop-types'
 
 /**
  * @typedef {object} EnterFieldProps

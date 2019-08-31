@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react'
+import React from 'react'
 import createReactClass from 'create-react-class'
 
 export const Clicker = createReactClass({

@@ -8,7 +8,7 @@ import pt from 'prop-types'
  * @property {string} answer The secret word players are trying to guess
  *
  * The possible statuses of a Hangman session
- * @typedef {'won' | 'lost' | 'playing'} HangmanStatus
+ * @typedef {'won' | 'lost' | 'playing'} HangmanStatus
  */
 
 export const HangmanProp = pt.shape({
