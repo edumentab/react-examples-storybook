@@ -1,12 +1,13 @@
 {
   "extends": ["plugin:react/recommended", "eslint:recommended"],
-  "plugins": ["prettier", "react", "react-hooks"],
+  "plugins": ["prettier", "react", "react-hooks", "local"],
   "parser": "babel-eslint",
   "parserOptions": { "sourceType": "module", "ecmaVersion": 2015 },
   "rules": {
     "react/prop-types": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".jsx"] }],
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "local/jsx-no-length-truthiness": "error"
   },
   "settings": {
     "react": {
