@@ -4,7 +4,7 @@ import Transition from 'react-transition-group/Transition'
 import classnames from 'classnames'
 
 import css from './ChessPiece.css'
-import { ChessPieceProps } from './ChessPiece.types';
+import { ChessPieceProps } from './ChessPiece.types'
 
 const char = {
   king: '♚',

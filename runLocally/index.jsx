@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 /*
 To run a component locally, simply...
@@ -10,6 +10,6 @@ To run a component locally, simply...
 - make changes to the code and the browser will immediately update!
 */
 
-import { Hangman } from "../src/apps/Hangman/app";
+import { Hangman } from '../src/apps/Hangman/app_class'
 
-ReactDOM.render(<Hangman />, document.getElementById("root"));
+ReactDOM.render(<Hangman />, document.getElementById('root'))
