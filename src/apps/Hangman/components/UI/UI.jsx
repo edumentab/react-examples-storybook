@@ -24,7 +24,7 @@ export const UI = props => {
   const status = getStatus(state)
 
   return (
-    <div>
+    <>
       <Status status={status} remaining={state.maxGuesses - nbrOfErrors - 1} />
       <EnterField
         onSubmit={makeGuess}
@@ -34,6 +34,6 @@ export const UI = props => {
       <Word letters={getLetters(state)} />
       <Gallow nbrOfErrors={nbrOfErrors} />
       <GuessHistory guesses={state.guesses} />
-    </div>
+    </>
   )
 }
