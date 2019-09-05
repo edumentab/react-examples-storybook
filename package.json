@@ -36,6 +36,8 @@
     "style-loader": "^0.23.1"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.18.0",
+    "@blueprintjs/select": "^3.10.0",
     "classnames": "^2.2.6",
     "create-react-class": "^15.6.3",
     "prop-types": "^15.7.2",
