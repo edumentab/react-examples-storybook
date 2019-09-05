@@ -4,7 +4,7 @@ import { Clicker } from '.'
 
 // The tests are identical for all Clicker variants
 
-describe('The Clicker component (hook variant)', () => {
+describe('The Clicker component (hook state variant)', () => {
   it('starts at 0 by default', () => {
     const wrapper = shallow(<Clicker />)
     expect(wrapper.find('[data-qa="count"]')).toHaveText('0')
