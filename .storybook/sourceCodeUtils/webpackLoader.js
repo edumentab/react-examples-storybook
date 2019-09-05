@@ -1,7 +1,4 @@
-const path = require('path')
 const cache = require('./cache')
-
-let emitted = false
 
 module.exports = function sourceLoader(source) {
   const opts = this.query || {}

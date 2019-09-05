@@ -75,7 +75,6 @@ export default Highlighter
 const matchRelPath = /^["']\..*['"]/
 
 function mapChild(node, i, row) {
-  const extraProps = {}
   if (i > 3) {
     const content = ((node.children || [])[0] || {}).value || ''
     if (

@@ -5,7 +5,7 @@ let previousFiles = {}
 
 class SourcePlugin {
   apply(compiler) {
-    compiler.hooks.entryOption.tap('Source Code Plugin', (context, entry) => {
+    compiler.hooks.entryOption.tap('Source Code Plugin', () => {
       cache.cleanCache()
     })
     compiler.hooks.emit.tapAsync(

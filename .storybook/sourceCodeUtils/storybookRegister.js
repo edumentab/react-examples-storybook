@@ -25,6 +25,7 @@ addonAPI.register('edumentab/sourcecode', storybookAPI => {
     title: 'source',
     route: ({ storyId }) => `/sourceCode/${storyId}`,
     match: ({ viewMode }) => viewMode === 'sourceCode',
+    // eslint-disable-next-line react/display-name
     render: ({ active }) => {
       return React.createElement(Panel, {
         channel: addonAPI.getChannel(),

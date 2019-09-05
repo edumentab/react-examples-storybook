@@ -1,7 +1,7 @@
 const SourcePlugin = require('./sourceCodeUtils/webpackPlugin')
 const path = require('path')
 
-module.exports = ({ config, mode }) => {
+module.exports = ({ config }) => {
   // remove Storybooks default CSS rules and replace with functioning CSS modules setup
   config.module.rules.splice(2, 1, {
     test: /\.css$/,

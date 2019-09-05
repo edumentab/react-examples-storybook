@@ -1,10 +1,9 @@
-import React, { useEffect, useCallback, useState } from 'react'
-import addons, { types } from '@storybook/addons'
+import React, { useEffect, useState } from 'react'
 import Highlighter from './storybookHighlighter'
 import path from 'path'
 
 const SourceCodePanel = props => {
-  const { channel, storybookAPI, rawSources: rawSourcesFromProps } = props
+  const { channel, rawSources: rawSourcesFromProps } = props
   const [fileState, setFileState] = useState({ history: [], idx: 0 })
   const filePath = fileState.history[fileState.idx] || ''
   const [rawSources, setRawSources] = useState(rawSourcesFromProps)
@@ -51,7 +50,7 @@ const SourceCodePanel = props => {
   if (!rawSources) return <span>...loading...</span>
   const files = Object.keys(rawSources).sort()
   const handleLinkClick = p => {
-    const rel = path.join(filePath.replace(/\/[^\/]*$/, '/'), p)
+    const rel = path.join(filePath.replace(/\/[^/]*$/, '/'), p)
     const found = ['/index.jsx', '/index.js', '.jsx', '.js', '.css', '']
       .map(suff => rel + suff)
       .find(p => !!rawSources[p])
