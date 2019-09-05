@@ -1,17 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import Highlighter from './storybookHighlighter'
 import path from 'path'
-import {
-  MenuItem,
-  Classes,
-  Icon,
-  Button,
-  ControlGroup,
-} from '@blueprintjs/core'
-import { Select } from '@blueprintjs/select'
-
-import '@blueprintjs/core/lib/css/blueprint.css'
-import './storybookPanel.css'
+import SourceCodePanelControls from './storybookPanel.controls'
 
 const SourceCodePanel = props => {
   const { channel, rawSources: rawSourcesFromProps } = props
@@ -19,7 +9,6 @@ const SourceCodePanel = props => {
   const filePath = fileState.history[fileState.idx] || ''
   const [rawSources, setRawSources] = useState(rawSourcesFromProps)
   const [showCompiled, setShowCompiled] = useState(false)
-  const [query, setQuery] = useState('')
   const handleFileChange = (path, rs) => {
     if (rs) {
       const actualPath = matchPathToSource(path, rs)
@@ -57,26 +46,6 @@ const SourceCodePanel = props => {
     return () => channel.removeListener('sourceCode/selectedStory')
   }, [rawSources])
 
-  const renderItem = useCallback(
-    (option, { modifiers, handleClick }) => {
-      const currentlySelected = filePath === option
-      return (
-        <MenuItem
-          className={`${Classes.TEXT_SMALL} Editor_Menu_Item`}
-          key={option}
-          icon={
-            <Icon icon={currentlySelected ? 'tick' : 'blank'} iconSize={10} />
-          }
-          active={modifiers.active}
-          text={option}
-          shouldDismissPopover={false}
-          onClick={handleClick}
-        />
-      )
-    },
-    [filePath]
-  )
-
   if (!props.active) return null
   if (!rawSources) return <span>...loading...</span>
   const files = Object.keys(rawSources).sort()
@@ -91,50 +60,18 @@ const SourceCodePanel = props => {
       console.warn('WARNING - could not find corresponding file in list', rel)
     }
   }
-  const handleBack = () =>
-    setFileState({
-      history: fileState.history,
-      idx: Math.max(0, fileState.idx - 1),
-    })
-  const handleForward = () =>
-    setFileState({
-      history: fileState.history,
-      idx: Math.min(fileState.idx + 1, fileState.history.length - 1),
-    })
 
   return (
     <div style={{ padding: '5px' }} className="sourcePanel">
-      <ControlGroup>
-        <Button
-          disabled={fileState.idx === 0}
-          icon="step-backward"
-          onClick={handleBack}
-        />
-        <Button
-          disabled={fileState.idx === fileState.history.length - 1}
-          icon="step-forward"
-          onClick={handleForward}
-        />
-        <Select
-          items={files.filter(option =>
-            option.toLowerCase().includes(query.toLowerCase())
-          )}
-          itemRenderer={renderItem}
-          onItemSelect={i => handleFileChange(i, rawSources)}
-          popoverProps={{ minimal: true }}
-          onQueryChange={setQuery}
-        >
-          <Button
-            text={filePath || 'Select a file'}
-            rightIcon="double-caret-vertical"
-          />
-        </Select>
-        <Button
-          active={showCompiled}
-          text="Compiled"
-          onClick={handleToggleCompiled}
-        />
-      </ControlGroup>
+      <SourceCodePanelControls
+        filePath={filePath}
+        fileState={fileState}
+        setFileState={setFileState}
+        files={files}
+        handleToggleCompiled={handleToggleCompiled}
+        handleFileChange={i => handleFileChange(i, rawSources)}
+        showCompiled={showCompiled}
+      />
       <Highlighter
         language={
           !showCompiled && filePath.match(/.css$/) ? 'css' : 'javascript'
