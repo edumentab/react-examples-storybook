@@ -5,8 +5,11 @@ import React, { useReducer } from 'react'
  *
  * @param {ClickerProps} props
  */
-export const Clicker = () => {
-  const [count, dispatch] = useReducer((state, action) => state + action, 0)
+export const Clicker = props => {
+  const [count, dispatch] = useReducer(
+    (state, action) => state + action,
+    props.start || 0
+  )
   return (
     <div>
       Current count: <span data-qa="count">{count}</span>
