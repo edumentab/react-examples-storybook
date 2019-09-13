@@ -7,7 +7,7 @@ export default function getAllThemes() {
   )
     .then(response => response.json())
     .then(result => ({
-      data: result.results.reduce((acc, t) => ({ ...acc, [t.id]: t }), {}),
+      data: result.results,
     }))
     .catch(e => Promise.reject({ error: e }))
 }
