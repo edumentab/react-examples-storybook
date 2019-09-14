@@ -1,0 +1,26 @@
+.tile {
+  height: 100px;
+  width: 100px;
+  border: 1px solid red;
+  display: flex;
+  margin: 3px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 50px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hidden {
+  background-color: brown;
+}
+
+.revealed {
+  background-color: gold;
+}
+
+.done {
+  background-color: green;
+}
