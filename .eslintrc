@@ -10,6 +10,7 @@
     "react/prop-types": 0,
     "react/jsx-filename-extension": [2, { "extensions": [".jsx"] }],
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
     "local/jsx-no-length-truthiness": "error"
   },
   "settings": {
