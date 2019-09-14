@@ -47,6 +47,7 @@ export function performMove(game, cardIdx) {
       } else {
         return {
           ...game,
+          errorsLeft: game.errorsLeft - 1,
           cards: game.cards.map((card, n) => ({
             ...card,
             status: n === cardIdx ? 'revealed' : card.status,

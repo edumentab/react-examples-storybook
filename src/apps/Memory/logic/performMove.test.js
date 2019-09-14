@@ -141,9 +141,9 @@ describe('the performMove function', () => {
         ],
       }
     })
-    test('the hidden card is revealed', () => {
+    test('the hidden card is revealed and errorsLeft is diminished', () => {
       expect(performMove(game, 2)).toEqual({
-        errorsLeft: 3,
+        errorsLeft: 2,
         cards: [
           { type: 0, status: 'revealed' },
           { type: 0, status: 'hidden' },
